@@ -10,14 +10,23 @@ public class Ward {
     public Ward(Boolean freePlaces, Integer places){
         this.freePlaces=freePlaces;
         this.places= places;
-        this.surname = "Врач";
+    }
+    public Ward(Ward object){
+        this.freePlaces = object.freePlaces;
+        this.places =object.places;
+        this.surname=object.surname;
+    }
+    public Ward() {
+        this. freePlaces = true;
+        this.places= 8;
+        this.surname="Баранович";
     }
 
     public String getSurname() {return surname;}
     public Integer getPlaces() {return places;}
     public boolean isFreePlaces() {return freePlaces;}
-    public void ShowSurname(){System.out.println(surname);}
-    public void ShowPlaces(){System.out.println(places);}
-    public void ShowFreePlaces(){System.out.println(freePlaces);}
+    public void ShowData(){
+        System.out.println("Врач - "+this.getSurname()+", количсетво мест - "+ this.getPlaces()+", свободные места - "+this.isFreePlaces() );
+    }
 
 }
