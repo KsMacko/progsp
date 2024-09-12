@@ -1,11 +1,11 @@
-import java.lang.reflect.Array;
+package classpackage;
 
 public class Ward {
     private String surname;
     private Integer places;
     private boolean freePlaces;
-    static Integer AllFreePlaces = 0;
-    static Integer AllFreeWards = 0;
+    public static Integer AllFreePlaces = 0;
+    public static Integer AllFreeWards = 0;
     public Ward(String surname, Boolean freePlaces, Integer places){
         this.freePlaces=freePlaces;
         this.places= places;

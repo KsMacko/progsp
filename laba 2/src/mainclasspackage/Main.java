@@ -1,9 +1,12 @@
+package mainclasspackage;
+
 import java.util.Arrays;
+import classpackage.Ward;
 
 public class Main {
 
     public static void main(String[] args) {
-        Ward [] wards  =new Ward[5];
+        Ward[] wards  =new Ward[5];
         wards[0] = new Ward();
         wards[1] = new Ward("Врач",true,15);
         wards[2] = new Ward("Додик",false,12);
