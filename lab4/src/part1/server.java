@@ -1,3 +1,5 @@
+package part1;
+
 import java.io.*;
 import java.net.*;
 
@@ -80,7 +82,7 @@ public class server {
         ObjectInputStream  sois   = null;
         ObjectOutputStream soos   = null;
         try {
-            System.out.println("server starting....");
+            System.out.println("part1.server starting....");
             serverSocket = new ServerSocket(2525);
             clientAccepted = serverSocket.accept();
             System.out.println("connection established....");
