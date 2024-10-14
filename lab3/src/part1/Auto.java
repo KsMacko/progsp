@@ -1,3 +1,5 @@
+package part1;
+
 public class Auto {
     private String Brand = "mers";;
     private String EngineType = "закрытый";

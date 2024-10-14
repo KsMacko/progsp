@@ -1,3 +1,5 @@
+package part1;
+
 public class Bus extends Auto{
     private Integer AmountOfPlaces = 9;
 
@@ -12,7 +14,7 @@ public class Bus extends Auto{
     public Bus(){}
     @Override
     public void brand() {
-        System.out.println(this.getBrand()+"is a good mark for Bus");
+        System.out.println(this.getBrand()+"is a good mark for part1.Bus");
     }
 
     public Integer getAmountOfPlaces() {return AmountOfPlaces;}

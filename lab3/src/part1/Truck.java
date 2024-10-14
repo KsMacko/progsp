@@ -1,3 +1,5 @@
+package part1;
+
 public class Truck extends Auto{
     private Integer LoadCapacity = 5;
     private String BodyType = "закрытый";
@@ -15,7 +17,7 @@ public class Truck extends Auto{
 
     @Override
     public void brand() {
-        System.out.println(this.getBrand()+"is a good mark for Truck");
+        System.out.println(this.getBrand()+"is a good mark for part1.Truck");
     }
 
     public Integer getLoadCapacity() {return LoadCapacity;}

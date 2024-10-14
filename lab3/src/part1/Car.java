@@ -1,3 +1,5 @@
+package part1;
+
 public class Car extends  Auto{
     private Integer FuelConsumption = 8;
     private Integer AccelerationTime = 4;
@@ -13,7 +15,7 @@ public class Car extends  Auto{
     public Car(){}
     @Override
     public void brand() {
-        System.out.println(this.getBrand()+"is a good mark for Car");
+        System.out.println(this.getBrand()+"is a good mark for part1.Car");
     }
 
     public Integer getFuelConsumption() {return FuelConsumption;}

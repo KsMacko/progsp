@@ -1,3 +1,5 @@
+package part1;
+
 public class WriterInfo {
     public static void ShowInfo(Auto auto){
         System.out.println("Марка: "+auto.getBrand()+
