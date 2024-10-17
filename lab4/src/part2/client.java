@@ -2,38 +2,66 @@ package part2;
 
 import java.net.*;
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
+
 public class client {
-    public void runClient() throws IOException {
-        DatagramSocket s = null;
-        try {
-            byte[] buf = new byte[512];
-            s = new DatagramSocket();
-            System.out.println("UDPClient: Started");
-            byte[] verCmd = { 'V', 'E', 'R', 'S' };
-            DatagramPacket sendPacket = new DatagramPacket(verCmd, verCmd.length, InetAddress.getByName("127.0.0.1"), 8001);
-            s.send(sendPacket);
-            DatagramPacket recvPacket = new DatagramPacket(buf, buf.length);
-            s.receive(recvPacket);
-            String version = new String(recvPacket.getData()).trim();
-            System.out.println("UDPClient: Server Version: " + version);
-            byte[] quitCmd = { 'Q', 'U', 'I', 'T' };
-            sendPacket.setData(quitCmd);
-            sendPacket.setLength(quitCmd.length);
-            s.send(sendPacket);
-            System.out.println("UDPClient: Ended");
+    public static int GetIntInput(Scanner scanner, String message){
+        int input = 0;
+        while (true) {
+            System.out.println(message);
+            if (scanner.hasNextInt()) {
+                input = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Некорректный ввод!");
+                scanner.next();
+            }
         }
-        finally {
-            if (s != null) {
+        return input;
+    }
+
+    public void runClient() {
+
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.println("|cos(x) - e^y|^(1 + 2*(lny)^2) * (1 + z + z^2/2 + z^3/3)");
+            try {
+                byte[] buf;
+                String sendData = "";
+                int i = 0;
+                do {
+                    String value = "";
+                    switch (i) {
+                        case 0 -> value = "x";
+                        case 1 -> value = "y";
+                        case 2 -> value = "z";
+                    }
+                    sendData += GetIntInput(scanner, "Введите " + value + ": ");
+                    sendData += "_";
+                    i++;
+                } while (i < 3);
+                buf = sendData.getBytes(StandardCharsets.UTF_8);
+
+                DatagramSocket s = new DatagramSocket();
+                DatagramPacket sendPacket = new DatagramPacket(buf, buf.length, InetAddress.getByName("127.0.0.1"), 1050);
+                s.send(sendPacket);
+                buf = new byte[Double.BYTES];
+                 DatagramPacket recvPacket = new DatagramPacket(buf, buf.length);
+                s.receive(recvPacket);
+
+                double receivedResponse = ByteBuffer.wrap(recvPacket.getData()).getDouble();
+                System.out.println("Результат выполнения функции: " + receivedResponse);
                 s.close();
-            }  }  }
-    public static void main(String[] args) {//метод main
-        try {
-            client client = new client();
-            client.runClient();
-        }
-        catch(IOException ex) {
-            ex.printStackTrace();
-        }
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        }while (true);
+    }
+    public static void main(String[] args) {
+        client client = new client();
+        client.runClient();
     }
 }
 
